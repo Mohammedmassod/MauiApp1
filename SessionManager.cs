@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 public static class SessionManager
 {
     private static DateTime _sessionStartTime;
-    private static int _sessionDurationMinutes = 3;
+    private static readonly int _sessionDurationMinutes = 3;
 
     public static bool IsLoggedIn
     {
@@ -15,7 +15,7 @@ public static class SessionManager
             Preferences.Set(nameof(IsLoggedIn), value);
             if (value)
             {
-                //StartSessionTimer();
+                StartSessionTimer();
             }
         }
     }
@@ -26,17 +26,18 @@ public static class SessionManager
         set => Preferences.Set(nameof(UserEmail), value);
     }
 
-    //private static void StartSessionTimer()
-    //{
-    //    _sessionStartTime = DateTime.Now;
+    [Obsolete]
+    private static void StartSessionTimer()
+    {
+        _sessionStartTime = DateTime.Now;
 
-    //    // استخدم Device.StartTimer لضمان عمل المؤقت حتى في الخلفية
-    //    Device.StartTimer(TimeSpan.FromMinutes(_sessionDurationMinutes), () =>
-    //    {
-    //        EndSession();
-    //        return false; // إيقاف المؤقت بعد انتهاء الجلسة
-    //    });
-    //}
+        // استخدم Device.StartTimer لضمان عمل المؤقت حتى في الخلفية
+        Device.StartTimer(TimeSpan.FromMinutes(_sessionDurationMinutes), () =>
+        {
+            EndSession();
+            return false; // إيقاف المؤقت بعد انتهاء الجلسة
+        });
+    }
 
     private static void EndSession()
     {

@@ -1,6 +1,4 @@
-﻿//using static Android.Webkit.ConsoleMessage;
-
-namespace MauiApp1
+﻿namespace MauiApp1
 {
     public partial class LoginPage : ContentPage
     {

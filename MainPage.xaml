@@ -6,7 +6,6 @@
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
@@ -14,27 +13,18 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- Header with Horizontal NavBar inside ScrollView -->
-            <StackLayout Grid.Row="0" BackgroundColor="#1E90FF" Padding="10">
-                <ScrollView Orientation="Horizontal">
-                    <StackLayout Orientation="Horizontal" Spacing="20">
-                        <!--<Label Text="تطبيقك الرائع" HorizontalOptions="Start" FontSize="24" TextColor="White" VerticalOptions="Center"/>-->
-                        <Button Text="🏠 الرئيسية" TextColor="White" BackgroundColor="#1E90FF" BorderColor="White" BorderWidth="1" CornerRadius="10" Clicked="OnHomeButtonClicked"/>
-                        <Button Text="⚙️ الإعدادات" TextColor="White" BackgroundColor="#1E90FF" BorderColor="White" BorderWidth="1" CornerRadius="10" Clicked="OnSettingsButtonClicked"/>
-                        <!--<Button Text="❓ المساعدة" TextColor="White" BackgroundColor="#1E90FF" BorderColor="White" BorderWidth="1" CornerRadius="10" Clicked="OnHelpButtonClicked"/>-->
-                        <Button Text="🚪 تسجيل الخروج" TextColor="White" BackgroundColor="#FF4500" BorderColor="White" BorderWidth="1" CornerRadius="10" Clicked="OnLogoutButtonClicked"/>
-                    </StackLayout>
-                </ScrollView>
-            </StackLayout>
-
             <!-- Content (Dashboard) -->
-            <ContentView x:Name="ContentArea" Grid.Row="1" BackgroundColor="White">
+            <ContentView x:Name="ContentArea" Grid.Row="0" BackgroundColor="White">
                 <!-- المحتوى الديناميكي سيتم عرضه هنا -->
             </ContentView>
 
-            <!-- Footer -->
-            <StackLayout Grid.Row="2" BackgroundColor="#1E90FF" Padding="10">
-                <Label Text="© 2025 تطبيقك الرائع" HorizontalOptions="Center" TextColor="White"/>
+            <!-- Footer as Navbar with Icons Only -->
+
+            <StackLayout Grid.Row="1" BackgroundColor="#1E90FF" Padding="0" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" VerticalOptions="End">
+                <Button ImageSource="Resources/Images/home_icon.png" WidthRequest="70" BackgroundColor="Transparent" Clicked="OnHomeButtonClicked"/>
+                <Button ImageSource="Resources/Images/settings_icon.png" WidthRequest="70"  BackgroundColor="Transparent" Clicked="OnSettingsButtonClicked"/>
+                <Button ImageSource="Resources/Images/help_icon.png" WidthRequest="70" BackgroundColor="Transparent" Clicked="OnHelpButtonClicked"/>
+                <Button ImageSource="Resources/Images/logout_icon.png" WidthRequest="70" BackgroundColor="Transparent" Clicked="OnLogoutButtonClicked"/>
             </StackLayout>
         </Grid>
     </ContentPage.Content>
