@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Hosting;
+using Syncfusion.Licensing;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace MauiApp1
 {
@@ -16,9 +19,12 @@ namespace MauiApp1
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
+            // إعداد Syncfusion
+            builder.ConfigureSyncfusionCore();
+            SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NMaF5cXmBCf0x1RHxbf1x1ZFZMYlxbQHBPIiBoS35Rc0ViW3tfdXZVQmZfU0B+");
             return builder.Build();
         }
     }

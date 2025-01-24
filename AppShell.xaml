@@ -13,7 +13,7 @@
         />
 
     <ShellContent
-        Title="نظام إدارة الصالة"
+        Title=""
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"
         Icon="Resources/Images/hall_icon.png"
