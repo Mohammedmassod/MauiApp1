@@ -1,0 +1,9 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.SettingsPage">
+    <VerticalStackLayout Padding="10" Spacing="10">
+        <Label Text="الإعدادات" FontSize="24" HorizontalOptions="Center"/>
+        <Label Text="هنا يمكنك تغيير إعدادات التطبيق." FontSize="18" HorizontalOptions="Center"/>
+        <!-- أضف المزيد من المحتويات هنا -->
+    </VerticalStackLayout>
+</ContentPage>

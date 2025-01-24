@@ -1,0 +1,35 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.LoginPage"
+             BackgroundColor="LightGray">
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+            <Image Source="logo.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center"/>
+            <Label Text="تسجيل الدخول"
+                   FontSize="36"
+                   TextColor="Black"
+                   HorizontalOptions="Center"/>
+            <Entry Placeholder="البريد الإلكتروني"
+                   x:Name="emailEntry"
+                   Keyboard="Email"
+                   TextColor="Black"
+                   BackgroundColor="White"
+                   WidthRequest="300"/>
+            <Entry Placeholder="كلمة المرور"
+                   x:Name="passwordEntry"
+                   IsPassword="True"
+                   TextColor="Black"
+                   BackgroundColor="White"
+                   WidthRequest="300"/>
+            <Button Text="تسجيل الدخول"
+                    TextColor="White"
+                    BackgroundColor="DodgerBlue"
+                    WidthRequest="300"
+                    Clicked="OnLoginButtonClicked"/>
+            <Label x:Name="messageLabel"
+                   Text=""
+                   TextColor="Red"
+                   HorizontalOptions="Center"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

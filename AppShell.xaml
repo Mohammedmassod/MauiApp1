@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <Shell
     x:Class="MauiApp1.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
@@ -8,8 +7,16 @@
     Title="MauiApp1">
 
     <ShellContent
-        Title="Home"
+        Title="تسجيل الدخول"
+        ContentTemplate="{DataTemplate local:LoginPage}"
+        Route="LoginPage" 
+        />
+
+    <ShellContent
+        Title="الصفحة الرئيسية"
         ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Route="MainPage" 
+
+        />
 
 </Shell>
