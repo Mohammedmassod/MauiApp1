@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-using System.Timers;
-using Microsoft.Maui.Controls;
+﻿using Microsoft.Maui.Controls;
 
 namespace MauiApp1
 {
@@ -20,9 +18,27 @@ namespace MauiApp1
 
             // إعداد مؤقت عدم التفاعل
             SetupInactivityTimer();
-
             // التحقق من انتهاء الجلسة
             CheckSession();
+        }
+
+        private async void OnMenuButtonClicked(object sender, EventArgs e)
+        {
+            string action = await DisplayActionSheet("خيارات القائمة", "إلغاء", null, "الخيار الأول", "الخيار الثاني", "الخيار الثالث");
+            switch (action)
+            {
+                case "الخيار الأول":
+                    await DisplayAlert("القائمة", "تم اختيار الخيار الأول", "حسنًا");
+                    break;
+                case "الخيار الثاني":
+                    await DisplayAlert("القائمة", "تم اختيار الخيار الثاني", "حسنًا");
+                    break;
+                case "الخيار الثالث":
+                    await DisplayAlert("القائمة", "تم اختيار الخيار الثالث", "حسنًا");
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void SetupInactivityTimer()
@@ -36,7 +52,7 @@ namespace MauiApp1
             this.Disappearing += (s, e) => { _inactivityTimer.Stop(); };
         }
 
-        private async void OnInactivityTimeout(object sender, ElapsedEventArgs e)
+        private async void OnInactivityTimeout(object sender, System.Timers.ElapsedEventArgs e)
         {
             // إغلاق الجلسة عند عدم التفاعل
             SessionManager.IsLoggedIn = false;

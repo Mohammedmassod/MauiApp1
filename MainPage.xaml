@@ -18,8 +18,7 @@
             <StackLayout Grid.Row="0" BackgroundColor="#1E90FF" Orientation="Horizontal" Padding="10" Spacing="10">
                 <Image Source="Resources/Images/logo.png" HeightRequest="40" VerticalOptions="Center"/>
                 <Label Text="نظام إدارة الصالة" TextColor="White" FontSize="24" VerticalOptions="Center" HorizontalOptions="StartAndExpand"/>
-                <Button Text="🔍" TextColor="White" BackgroundColor="Transparent" VerticalOptions="Center" Clicked="OnSearchButtonClicked"/>
-                <Button Text="☰" TextColor="White" BackgroundColor="Transparent" VerticalOptions="Center" Clicked="OnMenuButtonClicked"/>
+                <Button x:Name="MenuButton" Text="☰" TextColor="White" BackgroundColor="Transparent" VerticalOptions="Center" Clicked="OnMenuButtonClicked"/>
             </StackLayout>
 
             <!-- Content (Dashboard) -->
