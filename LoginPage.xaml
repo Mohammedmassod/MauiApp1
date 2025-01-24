@@ -4,7 +4,7 @@
              BackgroundColor="LightGray">
     <ScrollView>
         <VerticalStackLayout Padding="30" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
-            <Image Source="logo.png" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center"/>
+            <Image Source="Resources/Images/hall_icon.png" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center"/>
             <Label Text="تسجيل الدخول"
                    FontSize="36"
                    TextColor="Black"

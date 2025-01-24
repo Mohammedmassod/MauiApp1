@@ -13,10 +13,20 @@
         />
 
     <ShellContent
-        Title="الصفحة الرئيسية"
+        Title="نظام إدارة الصالة"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage"
+        Icon="Resources/Images/hall_icon.png"
         />
+    <!--<ShellContent
+      Title="نظام إدارة الصالة"
+      ContentTemplate="{DataTemplate local:MainPage}"
+      Route="MainPage"
+      Icon="Resources/Images/hall_icon.png"
+      FlyoutIcon="flyout_icon.png"
+      IsVisible="True"
+      IsEnabled="True"      
+      />-->
 
     <ShellContent
         Title="لوحة القيادة"
