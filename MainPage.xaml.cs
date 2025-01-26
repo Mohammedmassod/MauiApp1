@@ -11,7 +11,7 @@ namespace MauiApp1
             InitializeComponent();
 
             // عرض رسالة الترحيب كتنبيه
-            DisplayWelcomeMessage();
+            //DisplayWelcomeMessage();
 
             // تعيين المحتوى الافتراضي إلى لوحة القيادة (Dashboard)
             ContentArea.Content = new DashboardPage().Content;
@@ -68,14 +68,14 @@ namespace MauiApp1
             _inactivityTimer.Start();
         }
 
-        private async void DisplayWelcomeMessage()
-        {
-            if (!string.IsNullOrEmpty(SessionManager.UserEmail))
-            {
-                await DisplayAlert("ترحيب", $"مرحبًا بك، {SessionManager.UserEmail}!", "حسنًا");
-                await Task.Delay(3000); // انتظر ثلاث ثوانٍ
-            }
-        }
+        //private async void DisplayWelcomeMessage()
+        //{
+        //    if (!string.IsNullOrEmpty(SessionManager.UserEmail))
+        //    {
+        //        await DisplayAlert("ترحيب", $"مرحبًا بك، {SessionManager.UserEmail}!", "حسنًا");
+        //        await Task.Delay(3000); // انتظر ثلاث ثوانٍ
+        //    }
+        //}
 
         private async void CheckSession()
         {

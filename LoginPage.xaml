@@ -1,16 +1,62 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.LoginPage"
-             BackgroundColor="LightGray">
-	<ScrollView>
-		<VerticalStackLayout Padding="30" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
-			<Image Source="Resources/Images/hall_icon.png" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center"/>
-			<Label Text="تسجيل الدخول" FontSize="36" TextColor="Black" HorizontalOptions="Center"/>
-			<Entry Placeholder="البريد الإلكتروني" x:Name="emailEntry" Keyboard="Email" TextColor="Black" BackgroundColor="White" WidthRequest="300"/>
-			<Entry Placeholder="كلمة المرور" x:Name="passwordEntry" IsPassword="True" TextColor="Black" BackgroundColor="White" WidthRequest="300"/>
-			<Button Text="تسجيل الدخول" TextColor="White" BackgroundColor="DodgerBlue" WidthRequest="300" Clicked="OnLoginButtonClicked"/>
-			<Button Text="تسجيل الدخول ببصمة الإصبع" TextColor="White" BackgroundColor="Green" WidthRequest="300" Clicked="OnFingerprintLoginClicked"/>
-			<Label x:Name="messageLabel" Text="" TextColor="Red" HorizontalOptions="Center"/>
-		</VerticalStackLayout>
-	</ScrollView>
+             BackgroundColor="#F3F4F6">
+	<Grid Padding="30">
+		<!-- تعريف تخطيط الشبكة مع عدد من الصفوف المختلفة -->
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*" />
+			<!-- تعديل هذا الصف لجعله يأخذ المساحة المتبقية -->
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<Image Source="Resources/Images/hall_icon.png" WidthRequest="150" HeightRequest="150" Grid.Row="0" HorizontalOptions="Center" Margin="0,20"/>
+		<Label Text="تسجيل الدخول" FontSize="36" TextColor="#333333" Grid.Row="1" HorizontalOptions="Center" FontAttributes="Bold" Margin="0,10"/>
+
+		<Frame Grid.Row="2" CornerRadius="10" BorderColor="#DDDDDD" BackgroundColor="White" Padding="15" WidthRequest="300">
+			<Entry Placeholder="البريد الإلكتروني" x:Name="emailEntry" Keyboard="Email" TextColor="#333333" BackgroundColor="White" />
+		</Frame>
+
+		<Frame Grid.Row="3" CornerRadius="10" BorderColor="#DDDDDD" BackgroundColor="White" Padding="15" WidthRequest="300">
+			<Grid>
+				<Entry Placeholder="كلمة المرور" x:Name="passwordEntry" IsPassword="True" TextColor="#333333" BackgroundColor="White" TextChanged="OnPasswordEntryTextChanged"/>
+				<ImageButton x:Name="togglePasswordVisibilityButton"
+                             Source="Resources/Images/eye_closed.png"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             BackgroundColor="Transparent"
+                             Clicked="OnTogglePasswordVisibilityClicked"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"
+                             IsVisible="False"/>
+				<ImageButton x:Name="fingerprintButton"
+                             Source="Resources/Images/fingerprint_icon.png"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             BackgroundColor="Transparent"
+                             Clicked="OnFingerprintLoginClicked"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center"
+                             IsVisible="True"/>
+			</Grid>
+		</Frame>
+
+		<Button Grid.Row="4" Text="تسجيل الدخول" TextColor="White" BackgroundColor="#2196F3" WidthRequest="300" Margin="0,10" CornerRadius="10" FontAttributes="Bold" Clicked="OnLoginButtonClicked"/>
+
+		<Label Grid.Row="5" x:Name="messageLabel" Text="" TextColor="Red" HorizontalOptions="Center" Margin="0,10"/>
+
+		<!-- إضافة خيارات تسجيل الدخول الاجتماعي -->
+		<StackLayout Grid.Row="6" Orientation="Horizontal" HorizontalOptions="Center" Margin="0,20">
+			<Button Text="Google" TextColor="White" BackgroundColor="#DB4437" CornerRadius="10"  Margin="5"/>
+			<Button Text="Facebook" TextColor="White" BackgroundColor="#3B5998" CornerRadius="10"  Margin="5"/>
+			<!--<Button Text="Google" TextColor="White" BackgroundColor="#DB4437" CornerRadius="10" Clicked="OnGoogleLoginClicked" Margin="5"/>
+			<Button Text="Facebook" TextColor="White" BackgroundColor="#3B5998" CornerRadius="10" Clicked="OnFacebookLoginClicked" Margin="5"/>-->
+
+		</StackLayout>
+	</Grid>
 </ContentPage>

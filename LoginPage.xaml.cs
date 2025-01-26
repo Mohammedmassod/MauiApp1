@@ -8,6 +8,8 @@ namespace MauiApp1
 {
     public partial class LoginPage : ContentPage
     {
+        private bool isPasswordVisible = false;
+
         public LoginPage()
         {
             InitializeComponent();
@@ -35,8 +37,17 @@ namespace MauiApp1
                     messageLabel.TextColor = Colors.Green;
                     messageLabel.Text = "تم تسجيل الدخول بنجاح!";
 
+                    // تفريغ حقول الإدخال
+                    emailEntry.Text = string.Empty;
+                    passwordEntry.Text = string.Empty;
+                    OnPasswordEntryTextChanged(passwordEntry, null); // لتحديث الأيقونات
+
                     // الانتقال إلى الصفحة الرئيسية (MainPage)
                     await Shell.Current.GoToAsync("//MainPage");
+
+                    // إخفاء الرسالة بعد 3 ثوانٍ
+                    await Task.Delay(3000);
+                    messageLabel.Text = string.Empty;
                 }
                 else
                 {
@@ -57,8 +68,17 @@ namespace MauiApp1
                 SessionManager.IsLoggedIn = true;
                 SessionManager.UserEmail = "user@example.com"; // تغيير البريد الإلكتروني وفقًا لما يناسبك
 
+                // تفريغ حقول الإدخال
+                emailEntry.Text = string.Empty;
+                passwordEntry.Text = string.Empty;
+                OnPasswordEntryTextChanged(passwordEntry, null); // لتحديث الأيقونات
+
                 // الانتقال إلى الصفحة الرئيسية (MainPage)
                 await Shell.Current.GoToAsync("//MainPage");
+
+                // إخفاء الرسالة بعد 3 ثوانٍ
+                await Task.Delay(3000);
+                messageLabel.Text = string.Empty;
             }
             else
             {
@@ -77,6 +97,38 @@ namespace MauiApp1
 
             var result = await CrossFingerprint.Current.AuthenticateAsync(new AuthenticationRequestConfiguration("تسجيل الدخول ببصمة الإصبع", "ضع إصبعك على المستشعر للتحقق"));
             return result;
+        }
+
+        private void OnTogglePasswordVisibilityClicked(object sender, EventArgs e)
+        {
+            isPasswordVisible = !isPasswordVisible;
+
+            if (isPasswordVisible)
+            {
+                passwordEntry.IsPassword = false;
+                togglePasswordVisibilityButton.Source = "Resources/Images/eye_open.png";
+            }
+            else
+            {
+                passwordEntry.IsPassword = true;
+                togglePasswordVisibilityButton.Source = "Resources/Images/eye_closed.png";
+            }
+        }
+
+        private void OnPasswordEntryTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(passwordEntry.Text))
+            {
+                // إظهار أيقونة البصمة وإخفاء أيقونة العين
+                togglePasswordVisibilityButton.IsVisible = false;
+                fingerprintButton.IsVisible = true;
+            }
+            else
+            {
+                // إخفاء أيقونة البصمة وإظهار أيقونة العين
+                togglePasswordVisibilityButton.IsVisible = true;
+                fingerprintButton.IsVisible = false;
+            }
         }
     }
 }
