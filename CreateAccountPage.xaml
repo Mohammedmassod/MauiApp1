@@ -1,0 +1,52 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.CreateAccountPage"
+             BackgroundColor="#F3F4F6">
+
+	<Grid RowDefinitions="2*, 5*, Auto" ColumnDefinitions="*">
+
+		<!-- القسم العلوي -->
+		<VerticalStackLayout Grid.Row="0" Spacing="10" HorizontalOptions="Center" VerticalOptions="Center">
+			<Image Source="Resources/Images/hall_icon.png" WidthRequest="100" HeightRequest="100" />
+			<Label Text="إنشاء حساب جديد" FontSize="28" TextColor="#333333" HorizontalOptions="Center" FontAttributes="Bold" />
+		</VerticalStackLayout>
+
+		<!-- القسم السفلي -->
+		<VerticalStackLayout Grid.Row="1" Spacing="10" HorizontalOptions="Center" VerticalOptions="FillAndExpand">
+
+			<!-- الاسم الكامل -->
+			<Frame x:Name="NameFrame" CornerRadius="10" BorderColor="#DDDDDD" BackgroundColor="White" Padding="10" WidthRequest="300">
+				<Entry Placeholder="الاسم الكامل" x:Name="fullNameEntry" />
+			</Frame>
+			<Label x:Name="nameErrorLabel" Text="" TextColor="Red" FontSize="12" />
+
+			<!-- البريد الإلكتروني -->
+			<Frame x:Name="EmailFrame" CornerRadius="10" BorderColor="#DDDDDD" BackgroundColor="White" Padding="10" WidthRequest="300">
+				<Entry Placeholder="البريد الإلكتروني" x:Name="emailEntry" Keyboard="Email" />
+			</Frame>
+			<Label x:Name="emailErrorLabel" Text="" TextColor="Red" FontSize="12" />
+
+			<!-- كلمة المرور -->
+			<Frame x:Name="PasswordFrame" CornerRadius="10" BorderColor="#DDDDDD" BackgroundColor="White" Padding="10" WidthRequest="300">
+				<Entry Placeholder="كلمة المرور" x:Name="passwordEntry" IsPassword="True" />
+			</Frame>
+			<Label x:Name="passwordErrorLabel" Text="" TextColor="Red" FontSize="12" />
+
+			<!-- تأكيد كلمة المرور -->
+			<Frame  x:Name="ConfirmPasswordFrame" CornerRadius="10" BorderColor="#DDDDDD" BackgroundColor="White" Padding="10" WidthRequest="300">
+				<Entry Placeholder="تأكيد كلمة المرور" x:Name="confirmPasswordEntry" IsPassword="True" />
+			</Frame>
+			<Label x:Name="confirmPasswordErrorLabel" Text="" TextColor="Red" FontSize="12" />
+
+			<!-- زر إنشاء الحساب -->
+			<Button Text="إنشاء حساب" TextColor="White" BackgroundColor="#4CAF50" WidthRequest="300" CornerRadius="10" FontAttributes="Bold" Clicked="OnCreateAccountButtonClicked" />
+
+		</VerticalStackLayout>
+
+		<!-- زر العودة -->
+		<VerticalStackLayout Grid.Row="2" Padding="10" HorizontalOptions="Center" VerticalOptions="End">
+			<Button Text="العودة لتسجيل الدخول" TextColor="#2196F3" BackgroundColor="Transparent" Clicked="OnBackToLoginButtonClicked" />
+		</VerticalStackLayout>
+
+	</Grid>
+</ContentPage>

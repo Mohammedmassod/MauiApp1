@@ -130,5 +130,11 @@ namespace MauiApp1
                 fingerprintButton.IsVisible = false;
             }
         }
+
+        private async void OnCreateAccountButtonClicked(object sender, EventArgs e)
+        {
+            // الانتقال إلى صفحة إنشاء الحساب
+            await Shell.Current.GoToAsync("//CreateAccountPage");
+        }
     }
 }

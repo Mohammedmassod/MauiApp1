@@ -45,5 +45,10 @@
         ContentTemplate="{DataTemplate local:HelpPage}"
         Route="HelpPage"
         />
+    <ShellContent
+        Title="تسجيل الدخول"
+        ContentTemplate="{DataTemplate local:CreateAccountPage}"
+        Route="CreateAccountPage"
+        />
 
 </Shell>
