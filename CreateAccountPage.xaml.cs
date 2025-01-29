@@ -55,6 +55,11 @@ public partial class CreateAccountPage : ContentPage
 
         // إذا لم يكن هناك خطأ، إكمال عملية التسجيل
         await DisplayAlert("نجاح", "تم إنشاء الحساب بنجاح!", "موافق");
+        passwordEntry.Text = string.Empty;
+        fullNameEntry.Text = string.Empty;
+        emailEntry.Text = string.Empty;
+        confirmPasswordEntry.Text = string.Empty;
+
         await Shell.Current.GoToAsync("//LoginPage");
     }
 

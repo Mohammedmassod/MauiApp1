@@ -22,41 +22,32 @@ namespace MauiApp1
 
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                messageLabel.Text = "الرجاء إدخال البريد الإلكتروني وكلمة المرور.";
+                await DisplayAlert("خطأ", "الرجاء إدخال البريد الإلكتروني وكلمة المرور.", "موافق");
+                return;
+            }
+
+            // محاكاة تسجيل الدخول
+            if (email == "user@example.com" && password == "password")
+            {
+                // فتح الجلسة
+                SessionManager.IsLoggedIn = true;
+                SessionManager.UserEmail = email;
+
+                await DisplayAlert("نجاح", "تم تسجيل الدخول بنجاح!", "موافق");
+
+                // تفريغ حقول الإدخال
+                emailEntry.Text = string.Empty;
+                passwordEntry.Text = string.Empty;
+                OnPasswordEntryTextChanged(passwordEntry, null); // لتحديث الأيقونات
+
+                // الانتقال إلى الصفحة الرئيسية
+                await Shell.Current.GoToAsync("//MainPage");
             }
             else
             {
-                // اضف منطق التحقق من تسجيل الدخول هنا
-                // مثال بسيط:
-                if (email == "user@example.com" && password == "password")
-                {
-                    // فتح الجلسة
-                    SessionManager.IsLoggedIn = true;
-                    SessionManager.UserEmail = email;
-
-                    messageLabel.TextColor = Colors.Green;
-                    messageLabel.Text = "تم تسجيل الدخول بنجاح!";
-
-                    // تفريغ حقول الإدخال
-                    emailEntry.Text = string.Empty;
-                    passwordEntry.Text = string.Empty;
-                    OnPasswordEntryTextChanged(passwordEntry, null); // لتحديث الأيقونات
-
-                    // الانتقال إلى الصفحة الرئيسية (MainPage)
-                    await Shell.Current.GoToAsync("//MainPage");
-
-                    // إخفاء الرسالة بعد 3 ثوانٍ
-                    await Task.Delay(3000);
-                    messageLabel.Text = string.Empty;
-                }
-                else
-                {
-                    messageLabel.TextColor = Colors.Red;
-                    messageLabel.Text = "البريد الإلكتروني أو كلمة المرور غير صحيحة.";
-                }
+                await DisplayAlert("خطأ", "البريد الإلكتروني أو كلمة المرور غير صحيحة.", "موافق");
             }
         }
-
         private async void OnFingerprintLoginClicked(object sender, EventArgs e)
         {
             var result = await AuthenticateWithFingerprintAsync();
